@@ -35,7 +35,6 @@ public class EiconApplication {
 	public LocaleResolver localeResolver() {
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
-
 	
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {

@@ -1,4 +1,4 @@
-package br.com.eicon.service;
+package br.com.eicon.service.impl;
 
 
 
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.eicon.model.Pedido;
 import br.com.eicon.repository.PedidoRepository;
+import br.com.eicon.service.PedidoService;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
