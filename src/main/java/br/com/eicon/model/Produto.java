@@ -36,7 +36,7 @@ public class Produto implements Serializable {
 	@Digits(integer=3, fraction=2)
 	private BigDecimal valorProduto;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value = "pedido-item-produto")
 	@OneToMany(mappedBy = "produto")
 	private List<PedidoItem> listaDePedidoItens;
 	

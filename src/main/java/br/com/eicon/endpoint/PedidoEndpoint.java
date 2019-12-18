@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -51,7 +52,7 @@ public class PedidoEndpoint {
 		        @ApiResponse(responseCode = "200", description = "Operacao realizada com sucesso", 
 		        		content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pedido.class)))) })	
 	@GetMapping()
-	public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
+	public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
 		    							@RequestParam(value = "size", defaultValue = "10") Integer size){
 		
 		return new ResponseEntity<>(pedidoService.findAll(PageRequest.of(page, size, Sort.by("idPedido").ascending().and(Sort.by("dataDoPedido")))), HttpStatus.OK);
@@ -71,7 +72,7 @@ public class PedidoEndpoint {
 	        @ApiResponse(responseCode = "201", description = "Pedido criado com sucesso", content = @Content(schema = @Schema(implementation = Pedido.class))), 
 	        @ApiResponse(responseCode = "400", description = "Inserção inválida"), 
 	        @ApiResponse(responseCode = "409", description = "Pedido existente") })	
-	@PostMapping
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> save(@Valid @RequestBody Pedido pedido){
 		return new ResponseEntity<>(pedidoService.save(pedido), HttpStatus.CREATED);
 	}

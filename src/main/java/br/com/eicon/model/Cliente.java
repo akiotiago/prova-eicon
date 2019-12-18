@@ -44,8 +44,7 @@ public class Cliente implements Serializable {
 	@Email
 	private String email;
 	
-	
-	@JsonManagedReference
+	@JsonManagedReference(value = "pedido-cliente")
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> listaDePedidos;
 

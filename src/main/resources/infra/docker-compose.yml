@@ -1,0 +1,15 @@
+version: '3.7'
+volumes:
+    db-volume:
+services:
+    db-mysql:
+        image: mysql:5.7.28
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=db-eicon
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=root
+        volumes:
+            - db-volume:/var/lib/mysql

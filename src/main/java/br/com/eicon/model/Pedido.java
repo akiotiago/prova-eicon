@@ -53,12 +53,12 @@ public class Pedido implements Serializable {
 	@Digits(integer=3, fraction=2)
 	private BigDecimal valorTotalDoPedido;
 	
-	@JsonBackReference
+	@JsonBackReference(value = "pedido-cliente")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idCliente", insertable = false, updatable = false)
 	private Cliente cliente;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value = "pedido-itens")
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoItem> listaPedidoItens;
 	

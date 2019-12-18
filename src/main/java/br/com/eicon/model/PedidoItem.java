@@ -41,12 +41,12 @@ public class PedidoItem implements Serializable {
 	@Digits(integer=3, fraction=2)
 	private BigDecimal valorTotalItensDoPedido;
 	
-	@JsonBackReference
+	@JsonBackReference(value = "pedido-itens")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPedido", referencedColumnName = "idPedido", insertable = false, updatable = false)
 	private Pedido pedido;
 	
-	@JsonBackReference
+	@JsonBackReference(value = "pedido-item-produto")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idProduto", referencedColumnName = "idProduto", insertable = false, updatable = false)
 	private Produto produto;
