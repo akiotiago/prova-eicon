@@ -1,7 +1,12 @@
 package br.com.eicon;
 
+import java.util.Locale;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
 public class EiconApplication {
@@ -16,7 +21,9 @@ public class EiconApplication {
 //	https://dzone.com/articles/how-to-enrich-dtos-with-virtual-properties-via-spr
 	
 	//Validation jpa
+//	https://www.mkyong.com/spring-boot/spring-rest-validation-example/
 //	https://www.baeldung.com/spring-boot-bean-validation
+//	https://reflectoring.io/bean-validation-with-spring-boot/
 	
 //	Override default methods jpa query
 //	https://stackoverflow.com/questions/41967368/spring-boot-simplest-way-to-express-projections
@@ -32,5 +39,12 @@ public class EiconApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EiconApplication.class, args);
 	}
-
+	
+	@Bean
+	public LocaleResolver localeResolver() {
+	    SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+	    sessionLocaleResolver.setDefaultLocale(new Locale("pt", "BR"));
+	    return sessionLocaleResolver;
+	}
+	
 }

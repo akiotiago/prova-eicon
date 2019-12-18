@@ -18,12 +18,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -37,7 +38,7 @@ public class Pedido implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ApiModelProperty(value = "Identificador do Pedido")
+	@Schema(description = "Identificador do pedido")
 	private Long idPedido;
 	
 	@NotNull
@@ -49,6 +50,7 @@ public class Pedido implements Serializable {
 	private Date dataDoPedido;
 	
 	@DecimalMin(value = "0.01")
+	@Digits(integer=3, fraction=2)
 	private BigDecimal valorTotalDoPedido;
 	
 	@JsonBackReference

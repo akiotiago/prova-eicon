@@ -19,7 +19,6 @@
 		<version.jackson.databind>2.10.1</version.jackson.databind>
 		<version.modelmapper>2.3.5</version.modelmapper>
 		<version.flyway-core>6.1.1</version.flyway-core>
-		<version.springfox-swagger2>2.9.2</version.springfox-swagger2>
 	</properties>
 
 	<dependencies>
@@ -68,16 +67,6 @@
 		    <version>${version.flyway-core}</version>
 		</dependency>		
 		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>${version.springfox-swagger2}</version>
-		</dependency>
-		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>${version.springfox-swagger2}</version>
-		</dependency>
-		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>${version.jackson.databind}</version>
@@ -87,7 +76,12 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-ui</artifactId>
+		    <version>1.2.18</version>
+		</dependency>
+			
 	</dependencies>
 
 	<build>
@@ -95,6 +89,37 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-maven-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <id>pre-integration-test</id>
+			            <goals>
+			                <goal>start</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>post-integration-test</id>
+			            <goals>
+			                <goal>stop</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
+			    <groupId>org.springdoc</groupId>
+			    <artifactId>springdoc-openapi-maven-plugin</artifactId>
+			    <version>0.2</version>
+			    <executions>
+			        <execution>
+			            <phase>integration-test</phase>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			        </execution>
+			    </executions>
 			</plugin>
 		</plugins>
 	</build>

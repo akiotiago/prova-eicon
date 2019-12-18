@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -32,6 +33,7 @@ public class Produto implements Serializable {
 	private String descricao;
 	
 	@DecimalMin(value = "0.01")
+	@Digits(integer=3, fraction=2)
 	private BigDecimal valorProduto;
 	
 	@JsonManagedReference
