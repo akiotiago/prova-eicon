@@ -10,7 +10,7 @@ import br.com.eicon.model.Pedido;
 @Projection(name = "pedidoProjection", types = { Pedido.class })
 public interface PedidoProjection {
 
-	Long getIdPedido();
+	Long getId();
 	
 	Date getDataDoPedido();
 	

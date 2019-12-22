@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +27,18 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
 @Entity
-@Table(name = "TB_PEDIDO")
+@AllArgsConstructor
+@NoArgsConstructor @Getter @Setter @EqualsAndHashCode 
+@Builder(toBuilder = true)
+@Table(name = "tb_pedido")
 public class Pedido implements Serializable {
 	
 	private static final long serialVersionUID = 7670922852808938393L;
@@ -39,27 +46,56 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Schema(description = "Identificador do pedido")
-	private Long idPedido;
+	private Long id;
 	
 	@NotNull
-	@Column(name = "idCliente")
+	@Column(name = "id_cliente")
 	private Long idCliente;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_do_pedido")
 	private Date dataDoPedido;
 	
 	@DecimalMin(value = "0.01")
-	@Digits(integer=3, fraction=2)
+	@Digits(integer=12, fraction=2)
+	@Column(name = "valor_total_do_pedido")
 	private BigDecimal valorTotalDoPedido;
 	
 	@JsonBackReference(value = "pedido-cliente")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idCliente", insertable = false, updatable = false)
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id", insertable = false, updatable = false)
 	private Cliente cliente;
 	
 	@JsonManagedReference(value = "pedido-itens")
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoItem> listaPedidoItens;
+	
+	public boolean isCliente() {
+		return Objects.nonNull(this.cliente);
+	}
+	
+	public boolean isListaPedidoItens() {
+		return (this.listaPedidoItens != null && !this.listaPedidoItens.isEmpty());
+	}
+
+	public Optional<Long> getIdOptional() {
+		return Optional.ofNullable(id);
+	}
+
+	public Optional<Long> getIdClienteOptional() {
+		return Optional.ofNullable(idCliente);
+	}
+
+	public Optional<Date> getDataDoPedidoOptional() {
+		return Optional.ofNullable(dataDoPedido);
+	}
+
+	public Optional<BigDecimal> getValorTotalDoPedidoOptional() {
+		return Optional.ofNullable(valorTotalDoPedido);
+	}
+
+	
+	
 	
 }

@@ -32,7 +32,7 @@ public class TesteClienteService {
 	@SuppressWarnings("static-access")
 	public Cliente criarUmNovoCliente() {
 		return new Cliente().builder()
-				.nomeCLiente("Joao")
+				.nomeCliente("Joao")
 				.cpf("851.712.410-31")
 				.email("joao@joao.com.br")
 				.build();
@@ -43,7 +43,7 @@ public class TesteClienteService {
 		Cliente cliente = criarUmNovoCliente();
 		this.clienteService.save(cliente);
 		assertThat(cliente.getId()).isNotNull();
-		assertThat(cliente.getNomeCLiente()).isEqualTo("Joao");
+		assertThat(cliente.getNomeCliente()).isEqualTo("Joao");
 		assertThat(cliente.getCpf()).isEqualTo("851.712.410-31");
 		assertThat(cliente.getEmail()).isEqualTo("joao@joao.com.br");
 	}
@@ -65,7 +65,7 @@ public class TesteClienteService {
 
 		ClienteBuilder clienteBuilder = cliente.toBuilder();
 		Cliente clienteParaAtualizar = clienteBuilder
-			.nomeCLiente("Joao 12")
+			.nomeCliente("Joao 12")
 			.cpf("505.695.890-53")
 			.email("joao12@joao12.com.br")
 			.build();		
@@ -73,7 +73,7 @@ public class TesteClienteService {
 		this.clienteService.save(clienteParaAtualizar);
 
 		Optional<Cliente> clienteAtualizado = this.clienteService.findById(clienteParaAtualizar.getId());
-		assertThat(clienteAtualizado.get().getNomeCLiente()).isEqualTo("Joao 12");
+		assertThat(clienteAtualizado.get().getNomeCliente()).isEqualTo("Joao 12");
 		assertThat(clienteAtualizado.get().getCpf()).isEqualTo("505.695.890-53");
 		assertThat(clienteAtualizado.get().getEmail()).isEqualTo("joao12@joao12.com.br");
 	}
@@ -85,14 +85,14 @@ public class TesteClienteService {
 		
 		@SuppressWarnings("static-access")
 		Cliente cliente2 = new Cliente().builder()
-			.nomeCLiente("Joao 12")
+			.nomeCliente("Joao 12")
 			.cpf("505.695.890-53")
 			.email("joao12@joao12.com.br")
 			.build();		
 		
 		this.clienteService.save(cliente2);
 		
-		List<ClienteProjection> listaCliente = this.clienteService.findClienteByNomeCLienteStartingWithIgnoreCase("j", ClienteProjection.class);
+		List<ClienteProjection> listaCliente = this.clienteService.findClienteByNomeClienteStartingWithIgnoreCase("j", ClienteProjection.class);
 		assertThat(listaCliente.size()).isEqualTo(2);
 	}
 	

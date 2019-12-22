@@ -6,8 +6,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import br.com.eicon.model.Cliente;
 
+
 public interface ClienteRepository extends PagingAndSortingRepository<Cliente, Long>{
 
-	<T> List<T> findClienteByNomeCLienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass);
+	<T> List<T> findClienteByNomeClienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass);
 	
 }

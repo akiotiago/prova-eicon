@@ -11,7 +11,7 @@ import br.com.eicon.model.Cliente;
 
 public interface ClienteService {
 
-	public <T> List<T> findClienteByNomeCLienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass);
+	public <T> List<T> findClienteByNomeClienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass);
 	
 	public Page<ClienteProjection> findAll(Pageable pageable);
 	

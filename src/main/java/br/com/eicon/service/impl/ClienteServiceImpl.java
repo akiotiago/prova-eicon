@@ -24,8 +24,8 @@ public class ClienteServiceImpl implements ClienteService {
 	private ClienteProjectionRepository clienteProjectionRepository;
 
 	@Override
-	public <T> List<T> findClienteByNomeCLienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass) {
-		return this.clienteRepository.findClienteByNomeCLienteStartingWithIgnoreCase(nomeCliente, projectionClass);
+	public <T> List<T> findClienteByNomeClienteStartingWithIgnoreCase(String nomeCliente, Class<T> projectionClass) {
+		return this.clienteRepository.findClienteByNomeClienteStartingWithIgnoreCase(nomeCliente, projectionClass);
 	}
 	
 	@Override

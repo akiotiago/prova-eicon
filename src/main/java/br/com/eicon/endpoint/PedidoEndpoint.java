@@ -48,6 +48,7 @@ public class PedidoEndpoint {
 	@Autowired
 	private PedidoService pedidoService;
 
+	@Operation(summary = "Busca um pedido", description = "Retorna uma lista de Pedidos", tags = { "Pedido" })
 	@ApiResponses(value = {
 		        @ApiResponse(responseCode = "200", description = "Operacao realizada com sucesso", 
 		        		content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pedido.class)))) })	
@@ -55,7 +56,7 @@ public class PedidoEndpoint {
 	public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
 		    							@RequestParam(value = "size", defaultValue = "10") Integer size){
 		
-		return new ResponseEntity<>(pedidoService.findAll(PageRequest.of(page, size, Sort.by("idPedido").ascending().and(Sort.by("dataDoPedido")))), HttpStatus.OK);
+		return new ResponseEntity<>(pedidoService.findAll(PageRequest.of(page, size, Sort.by("id").ascending().and(Sort.by("dataDoPedido")))), HttpStatus.OK);
 	}
 
 	@Operation(summary = "Busca um pedido pelo ID", description = "Retorna somente um pedido por ID", tags = { "Pedido" })
