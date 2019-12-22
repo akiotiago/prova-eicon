@@ -2,6 +2,7 @@ package br.com.eicon.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.persistence.Column;
@@ -53,6 +54,10 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> listaDePedidos;
 	
+	public boolean isId() {
+		return Objects.nonNull(this.id);
+	}
+
 	public boolean isListaDePedidos() {
 		return (this.listaDePedidos != null && !this.listaDePedidos.isEmpty());
 	}

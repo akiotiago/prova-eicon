@@ -70,7 +70,15 @@ public class Pedido implements Serializable {
 	@JsonManagedReference(value = "pedido-itens")
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoItem> listaPedidoItens;
-	
+
+	public boolean isId() {
+		return Objects.nonNull(this.id);
+	}
+
+	public boolean isIdCliente() {
+		return Objects.nonNull(this.idCliente);
+	}
+
 	public boolean isCliente() {
 		return Objects.nonNull(this.cliente);
 	}

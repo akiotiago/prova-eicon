@@ -62,7 +62,15 @@ public class PedidoItem implements Serializable {
 	public boolean isPedidoItemPK(){
 		return Objects.nonNull(this.pedidoItemPK);
 	}
-	
+
+	public boolean isPedidoItemPKIdPedido(){
+		return (Objects.nonNull(this.pedidoItemPK) && Objects.nonNull(this.pedidoItemPK.getIdPedido()));
+	}
+
+	public boolean isPedidoItemPKIdProduto(){
+		return (Objects.nonNull(this.pedidoItemPK) && Objects.nonNull(this.pedidoItemPK.getIdProduto()));
+	}
+
 	public boolean isPedido() {
 		return Objects.nonNull(this.pedido);
 	}
