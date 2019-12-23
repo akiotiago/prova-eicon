@@ -3,7 +3,7 @@
 
 ---
 
-#1 - Passo - Flyway
+# 1 - Passo - Flyway
 
 
 	Criar um schema no mysql
@@ -20,19 +20,17 @@
 
 ---
 
-#2 - OpenApi 3.0
+# 2 - OpenApi 3.0
 
 
 > 
 	http://localhost:8080/swagger-ui.html    
 >
 
-#3 - Exemplos  
+# 3 - Exemplos  
 
-Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**
-
-**POST** para a url [](http://localhost:8080/pedido/filtroPorJPQL "Efetua a busca pelo filtro")  
-
+Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**  
+Utilizar **POST** para a url (http://localhost:8080/pedido/filtroPorJPQL "Efetua a busca pelo filtro")    
 
 
 
