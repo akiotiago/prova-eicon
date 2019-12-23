@@ -46,7 +46,7 @@ public class Pedido implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Schema(description = "Identificador do pedido")
+	@Schema(description = "Identificador do pedido", defaultValue = "1", allowableValues =  {"available","pending","sold"})
 	private Long id;
 	
 	@NotNull

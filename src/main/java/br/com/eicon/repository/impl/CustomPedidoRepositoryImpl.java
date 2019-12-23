@@ -21,16 +21,21 @@ public class CustomPedidoRepositoryImpl<T> implements CustomPedidoRepository<T> 
 	@SuppressWarnings("hiding")
 	@Override
 	public <T> List<T> filtroDePedidos(Pedido pedido, Pageable pageable, Class<T> projectionClass) {
-		FiltroPedidoJpql filtroPedidoJpql = new FiltroPedidoJpql();
-		String query = filtroPedidoJpql.montarFiltroDePedidoJpql(pedido);
-//		String query = montarFiltroDePedidoJpql(pedido).append(montarClausulasDePedidoJpql(pedido)).toString();
-		TypedQuery<T> typedQuery = entityManager.createQuery(query, projectionClass);
-		filtroPedidoJpql.carregarParametrosNasClausulasDoPedidoJpql(pedido, typedQuery);
-		
-		typedQuery.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());
-		typedQuery.setMaxResults(pageable.getPageSize());
-		
-		return typedQuery.getResultList();
+		try {
+			FiltroPedidoJpql filtroPedidoJpql = new FiltroPedidoJpql();
+			String query = filtroPedidoJpql.montarFiltroDePedidoJpql(pedido);
+			TypedQuery<T> typedQuery = entityManager.createQuery(query, projectionClass);
+			filtroPedidoJpql.carregarParametrosNasClausulasDoPedidoJpql(pedido, typedQuery);
+			
+			typedQuery.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());
+			typedQuery.setMaxResults(pageable.getPageSize());
+			
+			return typedQuery.getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }

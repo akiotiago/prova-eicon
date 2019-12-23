@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.eicon.model.Pedido;
 import br.com.eicon.model.Produto;
 import br.com.eicon.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;

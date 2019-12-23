@@ -8,6 +8,7 @@ import br.com.eicon.model.Pedido;
 
 public interface CustomPedidoRepository<T> {
 	
+	@SuppressWarnings("hiding")
 	<T> List<T> filtroDePedidos(Pedido pedido, Pageable pageable, Class<T> projectionClass);
 	
 }

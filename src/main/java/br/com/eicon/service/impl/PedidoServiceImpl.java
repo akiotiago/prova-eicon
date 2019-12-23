@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import br.com.eicon.model.Pedido;
@@ -27,7 +28,15 @@ public class PedidoServiceImpl implements PedidoService {
 	public Page<Pedido> findAll(Pageable pageable) {
 		return pedidoRepository.findAll(pageable);
 	}
-	
+
+	public List<Pedido> findAll(Specification<Pedido> specificationPedido) {
+		return pedidoRepository.findAll(specificationPedido);
+	}
+
+	public Page<Pedido> findAll(Specification<Pedido> specificationPedido, Pageable pageable) {
+		return pedidoRepository.findAll(specificationPedido, pageable);
+	}
+
 	public Optional<Pedido> findById(Long id) {
 		return pedidoRepository.findById(id);
 	}
