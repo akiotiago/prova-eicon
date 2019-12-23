@@ -20,14 +20,14 @@
 
 ---
 
-####2 - OpenApi 3.0
+#2 - OpenApi 3.0
 
 
 > 
 	http://localhost:8080/swagger-ui.html    
 >
 
-####3 - Exemplos  
+#3 - Exemplos  
 
 Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**
 
@@ -36,7 +36,7 @@ Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**
 
 
 
-#####EX. 1 - Retorna todos os pedidos pela data do pedido
+### EX. 1 - Retorna todos os pedidos pela data do pedido
 
 >
 	{  
@@ -44,7 +44,7 @@ Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**
 	}  
 >
 
-#####EX. 2 - Retorna todos os pedidos que corresponderem extamente a todos os campos descritos
+### EX. 2 - Retorna todos os pedidos que corresponderem extamente a todos os campos descritos
 
 > 
 
@@ -67,7 +67,7 @@ Filtro dinamico por JPQL **http://localhost:8080/pedido/filtroPorJPQL**
 
 > 
 
-#####EX. 3 - Retorna todos os pedidos que possuem a palavra "Produto"
+### EX. 3 - Retorna todos os pedidos que possuem a palavra "Produto"
     {
         "listaPedidoItens": [
             {
