@@ -19,6 +19,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,22 +53,27 @@ public class Produto implements Serializable {
 	@OneToOne(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private PedidoItem pedidoItem;
 
+	@JsonIgnore
 	public boolean isId() {
 		return Objects.nonNull(this.id);
 	}
 	
+	@JsonIgnore
 	public boolean isPedidoItem() {
 		return Objects.nonNull(this.pedidoItem);
 	}
 
+	@JsonIgnore
 	public Optional<Long> getIdOptional() {
 		return Optional.ofNullable(id);
 	}
 
+	@JsonIgnore
 	public Optional<String> getDescricaoOptional() {
 		return Optional.ofNullable(descricao);
 	}
 
+	@JsonIgnore
 	public Optional<BigDecimal> getValorProdutoOptional() {
 		return Optional.ofNullable(valorProduto);
 	}

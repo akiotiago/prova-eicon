@@ -2,6 +2,7 @@ package br.com.eicon.service.impl;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class PedidoServiceImpl implements PedidoService {
 
 	@Autowired
 	private PedidoRepository pedidoRepository;
+
+	public <T> List<T> filtroDePedidos(Pedido pedido, Pageable pageable, Class<T> projectionClass) {
+		return pedidoRepository.filtroDePedidos(pedido, pageable, projectionClass);
+	}
 	
 	public Page<Pedido> findAll(Pageable pageable) {
 		return pedidoRepository.findAll(pageable);
@@ -38,6 +43,5 @@ public class PedidoServiceImpl implements PedidoService {
 	public void deleteById(Long idPedido) {
 		pedidoRepository.deleteById(idPedido);
 	}
-	
-	
+
 }

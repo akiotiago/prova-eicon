@@ -14,8 +14,6 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = { "br.com.eicon"} )
-//@EntityScan(basePackages = {"br.com.eicon.model", "br.com.eicon.dto"})
 public class EiconApplication {
 
 	@Autowired

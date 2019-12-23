@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.eicon.model.Pedido;
 
 @Repository
-public interface PedidoRepository extends PagingAndSortingRepository<Pedido, Long>{
+public interface PedidoRepository extends PagingAndSortingRepository<Pedido, Long>, CustomPedidoRepository<Pedido> {
 
 }

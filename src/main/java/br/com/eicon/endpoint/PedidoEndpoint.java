@@ -48,6 +48,14 @@ public class PedidoEndpoint {
 	@Autowired
 	private PedidoService pedidoService;
 
+	@PostMapping(path = "/filtro", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> filtroDePedidos(	@RequestBody Pedido pedido,
+												@RequestParam(value = "page", defaultValue = "0") Integer page,
+												@RequestParam(value = "size", defaultValue = "10") Integer size){
+		
+		return new ResponseEntity<>(pedidoService.filtroDePedidos(pedido, PageRequest.of(page, size, Sort.by("id").ascending()), Pedido.class) , HttpStatus.OK);
+	}
+	
 	@Operation(summary = "Busca um pedido", description = "Retorna uma lista de Pedidos", tags = { "Pedido" })
 	@ApiResponses(value = {
 		        @ApiResponse(responseCode = "200", description = "Operacao realizada com sucesso", 

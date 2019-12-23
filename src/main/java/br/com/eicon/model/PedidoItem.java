@@ -19,6 +19,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -59,30 +60,37 @@ public class PedidoItem implements Serializable {
 	@JoinColumn(name = "id_produto", referencedColumnName = "id")
 	private Produto produto;
 
+	@JsonIgnore
 	public boolean isPedidoItemPK(){
 		return Objects.nonNull(this.pedidoItemPK);
 	}
 
+	@JsonIgnore
 	public boolean isPedidoItemPKIdPedido(){
-		return (Objects.nonNull(this.pedidoItemPK) && Objects.nonNull(this.pedidoItemPK.getIdPedido()));
+		return (isPedidoItemPK() && Objects.nonNull(this.pedidoItemPK.getIdPedido()));
 	}
 
+	@JsonIgnore
 	public boolean isPedidoItemPKIdProduto(){
-		return (Objects.nonNull(this.pedidoItemPK) && Objects.nonNull(this.pedidoItemPK.getIdProduto()));
+		return (isPedidoItemPK() && Objects.nonNull(this.pedidoItemPK.getIdProduto()));
 	}
 
+	@JsonIgnore
 	public boolean isPedido() {
 		return Objects.nonNull(this.pedido);
 	}
 	
+	@JsonIgnore
 	public boolean isProduto() {
 		return Objects.nonNull(this.produto);
 	}
 
+	@JsonIgnore
 	public Optional<Double> getQuantidadeOptional() {
 		return Optional.ofNullable(quantidade);
 	}
 
+	@JsonIgnore
 	public Optional<BigDecimal> getValorTotalItensDoPedidoOptional() {
 		return Optional.ofNullable(valorTotalItensDoPedido);
 	}

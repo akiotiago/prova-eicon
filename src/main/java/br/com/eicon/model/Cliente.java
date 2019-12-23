@@ -15,8 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-import org.hibernate.validator.constraints.br.CPF;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -43,7 +42,7 @@ public class Cliente implements Serializable {
 	@Column(name = "nome_cliente")
 	private String nomeCliente;
 	
-	@CPF
+//	@CPF
 	@Column(length = 14)
 	private String cpf;
 	
@@ -54,26 +53,32 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> listaDePedidos;
 	
+	@JsonIgnore
 	public boolean isId() {
 		return Objects.nonNull(this.id);
 	}
 
+	@JsonIgnore
 	public boolean isListaDePedidos() {
 		return (this.listaDePedidos != null && !this.listaDePedidos.isEmpty());
 	}
 
+	@JsonIgnore
 	public Optional<Long> getIdOptional() {
 		return Optional.ofNullable(this.id);
 	}
 
+	@JsonIgnore
 	public Optional<String> getNomeClienteOptional() {
 		return Optional.ofNullable(nomeCliente);
 	}
 
+	@JsonIgnore
 	public Optional<String> getCpfOptional() {
 		return Optional.ofNullable(cpf);
 	}
 
+	@JsonIgnore
 	public Optional<String> getEmailOptional() {
 		return Optional.ofNullable(email);
 	}

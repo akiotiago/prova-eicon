@@ -1,12 +1,13 @@
 package br.com.eicon.repository;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 
 import br.com.eicon.model.Pedido;
 
-public interface CustomPedidoRepository {
+public interface CustomPedidoRepository<T> {
 	
-	<T> Page<T> filtroDePedidos(Pedido pedido, Pageable pageable, Class<T> projectionClass);
+	<T> List<T> filtroDePedidos(Pedido pedido, Pageable pageable, Class<T> projectionClass);
 	
 }

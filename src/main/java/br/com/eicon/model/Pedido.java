@@ -9,7 +9,6 @@ import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +23,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -53,7 +54,8 @@ public class Pedido implements Serializable {
 	private Long idCliente;
 	
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_do_pedido")
 	private Date dataDoPedido;
 	
@@ -63,7 +65,7 @@ public class Pedido implements Serializable {
 	private BigDecimal valorTotalDoPedido;
 	
 	@JsonBackReference(value = "pedido-cliente")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id", insertable = false, updatable = false)
 	private Cliente cliente;
 	
@@ -71,34 +73,42 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoItem> listaPedidoItens;
 
-	public boolean isId() {
-		return Objects.nonNull(this.id);
-	}
+//	@JsonIgnore
+//	public boolean isId() {
+//		return Objects.nonNull(this.id);
+//	}
+//
+//	@JsonIgnore
+//	public boolean isIdCliente() {
+//		return Objects.nonNull(this.idCliente);
+//	}
 
-	public boolean isIdCliente() {
-		return Objects.nonNull(this.idCliente);
-	}
-
+	@JsonIgnore
 	public boolean isCliente() {
-		return Objects.nonNull(this.cliente);
+		return Objects.nonNull(cliente);
 	}
 	
+	@JsonIgnore
 	public boolean isListaPedidoItens() {
 		return (this.listaPedidoItens != null && !this.listaPedidoItens.isEmpty());
 	}
 
+	@JsonIgnore
 	public Optional<Long> getIdOptional() {
 		return Optional.ofNullable(id);
 	}
 
+	@JsonIgnore
 	public Optional<Long> getIdClienteOptional() {
 		return Optional.ofNullable(idCliente);
 	}
 
+	@JsonIgnore
 	public Optional<Date> getDataDoPedidoOptional() {
 		return Optional.ofNullable(dataDoPedido);
 	}
 
+	@JsonIgnore
 	public Optional<BigDecimal> getValorTotalDoPedidoOptional() {
 		return Optional.ofNullable(valorTotalDoPedido);
 	}
