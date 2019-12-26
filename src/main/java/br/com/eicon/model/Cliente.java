@@ -54,7 +54,7 @@ public class Cliente implements Serializable {
 	private List<Pedido> listaDePedidos;
 	
 	@JsonIgnore
-	public boolean isId() {
+	public boolean isIdNotNull() {
 		return Objects.nonNull(this.id);
 	}
 

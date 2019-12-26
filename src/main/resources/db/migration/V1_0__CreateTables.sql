@@ -67,9 +67,9 @@ INSERT INTO `db-eicon`.`tb_cliente` (`cpf`,`email`,`nome_cliente`) VALUES ('902.
 INSERT INTO `db-eicon`.`tb_cliente` (`cpf`,`email`,`nome_cliente`) VALUES ('399.508.750-72','cli19@gmail.com','Customer 19');
 INSERT INTO `db-eicon`.`tb_cliente` (`cpf`,`email`,`nome_cliente`) VALUES ('634.362.050-87','cli20@gmail.com','Customer 20');
 
-INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/01',1,10.01);
-INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/02',2,20.02);
-INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/03',3,30.03);
+INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/01',1,20.02);
+INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/02',2,140.05);
+INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/03',3,50.01);
 INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/04',4,40.04);
 INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/05',5,50.05);
 INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/06',6,60.06);
@@ -89,6 +89,6 @@ INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_d
 INSERT INTO `db-eicon`.`tb_pedido` (`data_do_pedido`,`id_cliente`,`valor_total_do_pedido`) VALUES ('2019/12/01',20,200.02);
 
 INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (1,1,2,20.02);
-INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (2,2,1,10.02);
-INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (2,3,4,40.04);
+INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (2,2,1,20.01);
+INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (2,3,4,120.04);
 INSERT INTO `db-eicon`.`tb_pedido_item` (`id_pedido`,`id_produto`,`quantidade`,`valor_total_itens_do_pedido`) VALUES (3,5,1,50.01);

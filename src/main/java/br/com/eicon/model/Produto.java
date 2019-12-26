@@ -54,7 +54,7 @@ public class Produto implements Serializable {
 	private PedidoItem pedidoItem;
 
 	@JsonIgnore
-	public boolean isId() {
+	public boolean isIdNotNull() {
 		return Objects.nonNull(this.id);
 	}
 	
