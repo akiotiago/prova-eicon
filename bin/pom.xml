@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<version.jackson.databind>2.10.5.1</version.jackson.databind>
+		<version.jackson.databind>2.13.4.1</version.jackson.databind>
 		<version.modelmapper>2.3.5</version.modelmapper>
 		<version.flyway-core>6.1.1</version.flyway-core>
 	</properties>
